@@ -22,19 +22,7 @@ function getUserChoice() {
 
     // could use a try/catch here
 
-    // if userChoice == invalid {
-    
-    if (userChoice.toLowerCase() == 'rock') {
-        console.log('this worked')
-    }
-
-    // }
-
-    // seems like "in" works differently than python
-    // if (userChoice.toLowerCase() in moves) {
-    //     console.log('nice')
-    //     return userChoice.toLowerCase()
-    // }
+    // if userChoice == invalid {}
 
     if (moves.includes(userChoice.toLowerCase())) {
         console.log('nice')

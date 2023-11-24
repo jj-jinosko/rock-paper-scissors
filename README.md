@@ -29,6 +29,5 @@ Game Status:
 - compare player moves
     - win
     - tie
-- return results
 
 
