@@ -11,11 +11,9 @@ let computerWin = 0;
 
 let moves = ['rock', 'paper', 'scissors'];
 
-// Computer player input (computerSelectionom selection)
-
+// get computer player input
 function getComputerChoice() { 
-    computerSelection = moves[(Math.random() * moves.length) | 0]; // remove random to test overallWin()
-    // computerSelection = 'scissors' // for testing purposes
+    computerSelection = moves[(Math.random() * moves.length) | 0];
     console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
@@ -124,15 +122,13 @@ function rockPaperScissors() {
 
         while (true) {
             // ---------- Player Input: --------------
-            // Computer player input (computerSelectionom selection)
+            // get computer player input
             getComputerChoice()
 
-            // 
+            // get user input from prompt, try until a valid input is entered
             while (true) {
-            // User input from prompt 
                 playerSelection = prompt('What item do you choose?')
             
-                // could use a try/catch here
                 try {
                     playerSelection = playerSelection.toLowerCase()
                     console.log('playerSelection', playerSelection)
