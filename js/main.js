@@ -89,43 +89,47 @@ function gameStatus(playerSelection, computerSelection) {
 }
 
 // ---------- GAME-----------------------
-while (true) {
-    // ---------- Player Input: --------------
-    // Computer player input (computerSelectionom selection)
-    getComputerChoice()
 
-    // 
-    while (true) {
-    // User input from prompt 
-        playerSelection = prompt('What item do you choose?')
+function rockPaperScissors() {
+    // decide how many games you want to play
+    for (let i = 0; i < 3; i++){
+        while (true) {
+            // ---------- Player Input: --------------
+            // Computer player input (computerSelectionom selection)
+            getComputerChoice()
 
-    
-        // could use a try/catch here
+            // 
+            while (true) {
+            // User input from prompt 
+                playerSelection = prompt('What item do you choose?')
+            
+                // could use a try/catch here
+                try {
+                    playerSelection = playerSelection.toLowerCase()
+                    console.log('playerSelection', playerSelection)
+                }
+                catch(err) {
+                    console.log('something went wrong')
+                }
 
-        try {
-            playerSelection = playerSelection.toLowerCase()
-            console.log('playerSelection', playerSelection)
-        }
-        catch(err) {
-            console.log('something went wrong')
-        }
+                if (moves.includes(playerSelection.toLowerCase())) {
+                    break;
+                }
 
-        if (moves.includes(playerSelection.toLowerCase())) {
+                else {
+                    console.log('Please enter a valid option') 
+                    {continue; }
+                    }
+            }
+
+            // ---------- Game Status: ---------------
+            gameStatus(playerSelection, computerSelection);
+
             break;
         }
-
-        else {
-            console.log('Please enter a valid option') 
-            {continue; }
-            }
     }
-
-    // ---------- Game Status: ---------------
-    // - compare player moves
-    //     - win
-    //     - tie
-
-    gameStatus(playerSelection, computerSelection);
-
-    break;
 }
+
+//---- start GAME ---------
+
+rockPaperScissors()
