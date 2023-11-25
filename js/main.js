@@ -17,32 +17,55 @@ function getComputerChoice() {
 //     - valid input = cont.
 //     - invald input = retry
 
-function getUserChoice() {
-    let userChoice = prompt('What item do you choose?');
+// function getUserChoice() {
+//     let userChoice = prompt('What item do you choose?');
+//     return userChoice;
+// }
 
-    // could use a try/catch here
+// ---------- Game Status: ---------------
+// - compare player moves
+//     - win
+//     - tie
 
-    // if userChoice == invalid {}
 
-    if (moves.includes(userChoice.toLowerCase())) {
-        console.log('nice')
+// ---------- GAME-----------------------
+while (true) {
+    // ---------- Player Input: --------------
+    // Computer player input (random selection)
+    getComputerChoice()
+
+    // 
+    while (true) {
+    // User input from prompt 
+        let userChoice = prompt('What item do you choose?')
+
+    
+        // could use a try/catch here
+
+        try {
+            userChoice.toLowerCase()
+            console.log('it worked')
+        }
+        catch(err) {
+            console.log('something went wrong')
+        }
+
+        if (moves.includes(userChoice.toLowerCase())) {
+            break;
+        }
+
+        else {
+            console.log('Please enter a valid option') 
+            {continue; }
+            }
     }
 
+    // ---------- Game Status: ---------------
+    // - compare player moves
+    //     - win
+    //     - tie
+
+
+
+    break;
 }
-
-// ---------- Game Status: ---------------
-// - compare player moves
-//     - win
-//     - tie
-
-
-// ---------- Player Input: --------------
-// Computer player input (random selection)
-getComputerChoice()
-// User input from prompt 
-getUserChoice()
-
-// ---------- Game Status: ---------------
-// - compare player moves
-//     - win
-//     - tie
