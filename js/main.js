@@ -14,8 +14,8 @@ let moves = ['rock', 'paper', 'scissors'];
 // Computer player input (computerSelectionom selection)
 
 function getComputerChoice() { 
-    // computerSelection = moves[(Math.random() * moves.length) | 0]; // remove random to test overallWin()
-    computerSelection = 'scissors'
+    computerSelection = moves[(Math.random() * moves.length) | 0]; // remove random to test overallWin()
+    // computerSelection = 'scissors' // for testing purposes
     console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
