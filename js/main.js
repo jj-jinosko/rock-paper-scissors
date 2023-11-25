@@ -4,6 +4,9 @@
 let computerSelection;
 let playerSelection;
 
+let playerWin = 0;
+let computerWin = 0;
+
 // ---------- Player Input: --------------
 
 let moves = ['rock', 'paper', 'scissors'];
@@ -11,7 +14,8 @@ let moves = ['rock', 'paper', 'scissors'];
 // Computer player input (computerSelectionom selection)
 
 function getComputerChoice() { 
-    computerSelection = moves[(Math.random() * moves.length) | 0];
+    // computerSelection = moves[(Math.random() * moves.length) | 0]; // remove random to test overallWin()
+    computerSelection = 'scissors'
     console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
@@ -37,6 +41,7 @@ function getComputerChoice() {
 // paper   | paper   | tie      | scissors |
 // scissors| rock    | scissors | tie      |
 function gameStatus(playerSelection, computerSelection) {
+
     if (playerSelection == computerSelection) {
         console.log('tie');
     }
@@ -64,27 +69,50 @@ function gameStatus(playerSelection, computerSelection) {
 
     // Manual win
     else if (playerSelection == 'rock' && computerSelection == 'paper') {
-        console.log('Computer WINS!')
+        console.log('Computer WINS!');
+        return computerWin++;
     }
 
     else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-        console.log('You WIN!')
+        console.log('You WIN!');
+        return playerWin++
     }
 
     else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-        console.log('Compuer WINS!')
+        console.log('Compuer WINS!');
+        return computerWin++;
     }
 
     else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        console.log('You WIN!')
+        console.log('You WIN!');
+        return playerWin++
     }
 
     else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        console.log('Computer WINS!')
+        console.log('Computer WINS!');
+        return computerWin++;
     }
 
     else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        console.log('You WIN!')
+        console.log('You WIN!');
+        return playerWin++;
+    }
+}
+
+//-----------Overall Win-------------
+function overallWin(playerWin, computerWin){
+    console.log('overall playerWin', playerWin);
+    console.log('overall computerWin', computerWin);
+    if (playerWin > computerWin) {
+        console.log('YOU REALLY WIN');
+    }
+
+    else if (playerWin < computerWin) {
+        console.log('The computer beat you...');
+    }
+
+    else if (playerWin == computerWin) {
+        console.log('somehow, you both tied')
     }
 }
 
@@ -93,6 +121,7 @@ function gameStatus(playerSelection, computerSelection) {
 function rockPaperScissors() {
     // decide how many games you want to play
     for (let i = 0; i < 3; i++){
+
         while (true) {
             // ---------- Player Input: --------------
             // Computer player input (computerSelectionom selection)
@@ -125,9 +154,12 @@ function rockPaperScissors() {
             // ---------- Game Status: ---------------
             gameStatus(playerSelection, computerSelection);
 
+            console.log('playerWin', playerWin)
+            console.log('computerWin', computerWin)
             break;
         }
     }
+    overallWin(playerWin, computerWin)
 }
 
 //---- start GAME ---------
