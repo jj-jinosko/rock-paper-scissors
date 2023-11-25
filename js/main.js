@@ -1,4 +1,8 @@
-console.log("Test")
+
+
+// //---- GLOBALS ----
+let rand;
+let userChoice;
 
 // ---------- Player Input: --------------
 
@@ -7,7 +11,7 @@ let moves = ['rock', 'paper', 'scissors'];
 // Computer player input (random selection)
 
 function getComputerChoice() { 
-    let rand = moves[(Math.random() * moves.length) | 0];
+    rand = moves[(Math.random() * moves.length) | 0];
     console.log(rand); // for testing purposes
     return rand;
 }
@@ -28,6 +32,56 @@ function getComputerChoice() {
 //     - tie
 
 
+function gameStatus(userChoice, rand) {
+    if (userChoice == rand) {
+        console.log('tie');
+    }
+
+    // CAN make the 'board' separate from the player 
+    // let rock = 'rock';
+    // let paper = 'paper';
+    // let scissors = 'scissors';
+
+    // if (rock && paper) {
+    //     //paper wins
+    //     return paper
+    // }
+
+    // else if (rock && scissors) {
+    //     //rock wins
+    //     return rock
+    // }
+
+    // else if (paper && scissors) {
+    //     //scissors wins
+    //     return scissors
+    // }
+
+    else if (userChoice == 'rock' && rand == 'paper') {
+        console.log('Computer WINS!')
+    }
+
+    else if (userChoice == 'rock' && rand == 'scissors') {
+        console.log('You WIN!')
+    }
+
+    else if (userChoice == 'paper' && rand == 'scissors') {
+        console.log('Compuer WINS!')
+    }
+
+    else if (userChoice == 'paper' && rand == 'rock') {
+        console.log('You WIN!')
+    }
+
+    else if (userChoice == 'scissors' && rand == 'paper') {
+        console.log('Computer WINS!')
+    }
+
+    else if (userChoice == 'scissors' && rand == 'rock') {
+        console.log('You WIN!')
+    }
+}
+
 // ---------- GAME-----------------------
 while (true) {
     // ---------- Player Input: --------------
@@ -37,13 +91,13 @@ while (true) {
     // 
     while (true) {
     // User input from prompt 
-        let userChoice = prompt('What item do you choose?')
+        userChoice = prompt('What item do you choose?')
 
     
         // could use a try/catch here
 
         try {
-            userChoice.toLowerCase()
+            userChoice = userChoice.toLowerCase()
             console.log('it worked')
         }
         catch(err) {
@@ -65,7 +119,9 @@ while (true) {
     //     - win
     //     - tie
 
+    // gameStatus('rock', 'scissors');
 
+    gameStatus(userChoice, rand);
 
     break;
 }
