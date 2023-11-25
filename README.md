@@ -18,6 +18,10 @@ Rock paper scissors game in html and JavaScript
     - tie
 
 ## TODO:
+- change 'board' layout in game status functions
+- try to reduce number of nested loops in game play
+
+## DONE
 Player Input:
 - add computer player input (random selection)
 - take user input from prompt 
@@ -30,4 +34,7 @@ Game Status:
     - win
     - tie
 
-
+Multiple Rounds:
+- compare player wins
+    - win
+    - tie
