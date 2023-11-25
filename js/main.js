@@ -1,19 +1,19 @@
 
 
 // //---- GLOBALS ----
-let rand;
-let userChoice;
+let computerSelection;
+let playerSelection;
 
 // ---------- Player Input: --------------
 
 let moves = ['rock', 'paper', 'scissors'];
 
-// Computer player input (random selection)
+// Computer player input (computerSelectionom selection)
 
 function getComputerChoice() { 
-    rand = moves[(Math.random() * moves.length) | 0];
-    console.log(rand); // for testing purposes
-    return rand;
+    computerSelection = moves[(Math.random() * moves.length) | 0];
+    console.log('computerSelection', computerSelection); // for testing purposes
+    return computerSelection;
 }
 
 // User input from prompt 
@@ -21,9 +21,9 @@ function getComputerChoice() {
 //     - valid input = cont.
 //     - invald input = retry
 
-// function getUserChoice() {
-//     let userChoice = prompt('What item do you choose?');
-//     return userChoice;
+// function getplayerSelection() {
+//     let playerSelection = prompt('What item do you choose?');
+//     return playerSelection;
 // }
 
 // ---------- Game Status: ---------------
@@ -32,12 +32,17 @@ function getComputerChoice() {
 //     - tie
 
 
-function gameStatus(userChoice, rand) {
-    if (userChoice == rand) {
+//         | rock    | paper    | scissors |
+// rock    | tie     | paper    | rock     |
+// paper   | paper   | tie      | scissors |
+// scissors| rock    | scissors | tie      |
+function gameStatus(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
         console.log('tie');
     }
 
     // CAN make the 'board' separate from the player 
+    // let win = null;
     // let rock = 'rock';
     // let paper = 'paper';
     // let scissors = 'scissors';
@@ -57,27 +62,28 @@ function gameStatus(userChoice, rand) {
     //     return scissors
     // }
 
-    else if (userChoice == 'rock' && rand == 'paper') {
+    // Manual win
+    else if (playerSelection == 'rock' && computerSelection == 'paper') {
         console.log('Computer WINS!')
     }
 
-    else if (userChoice == 'rock' && rand == 'scissors') {
+    else if (playerSelection == 'rock' && computerSelection == 'scissors') {
         console.log('You WIN!')
     }
 
-    else if (userChoice == 'paper' && rand == 'scissors') {
+    else if (playerSelection == 'paper' && computerSelection == 'scissors') {
         console.log('Compuer WINS!')
     }
 
-    else if (userChoice == 'paper' && rand == 'rock') {
+    else if (playerSelection == 'paper' && computerSelection == 'rock') {
         console.log('You WIN!')
     }
 
-    else if (userChoice == 'scissors' && rand == 'paper') {
+    else if (playerSelection == 'scissors' && computerSelection == 'paper') {
         console.log('Computer WINS!')
     }
 
-    else if (userChoice == 'scissors' && rand == 'rock') {
+    else if (playerSelection == 'scissors' && computerSelection == 'rock') {
         console.log('You WIN!')
     }
 }
@@ -85,26 +91,26 @@ function gameStatus(userChoice, rand) {
 // ---------- GAME-----------------------
 while (true) {
     // ---------- Player Input: --------------
-    // Computer player input (random selection)
+    // Computer player input (computerSelectionom selection)
     getComputerChoice()
 
     // 
     while (true) {
     // User input from prompt 
-        userChoice = prompt('What item do you choose?')
+        playerSelection = prompt('What item do you choose?')
 
     
         // could use a try/catch here
 
         try {
-            userChoice = userChoice.toLowerCase()
-            console.log('it worked')
+            playerSelection = playerSelection.toLowerCase()
+            console.log('playerSelection', playerSelection)
         }
         catch(err) {
             console.log('something went wrong')
         }
 
-        if (moves.includes(userChoice.toLowerCase())) {
+        if (moves.includes(playerSelection.toLowerCase())) {
             break;
         }
 
@@ -119,9 +125,7 @@ while (true) {
     //     - win
     //     - tie
 
-    // gameStatus('rock', 'scissors');
-
-    gameStatus(userChoice, rand);
+    gameStatus(playerSelection, computerSelection);
 
     break;
 }
