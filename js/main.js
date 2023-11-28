@@ -1,5 +1,3 @@
-
-
 // //---- GLOBALS ----
 let computerSelection;
 let playerSelection;
@@ -38,32 +36,12 @@ function getComputerChoice() {
 // rock    | tie     | paper    | rock     |
 // paper   | paper   | tie      | scissors |
 // scissors| rock    | scissors | tie      |
+
 function gameStatus(playerSelection, computerSelection) {
 
     if (playerSelection == computerSelection) {
         console.log('tie');
     }
-
-    // CAN make the 'board' separate from the player 
-    // let win = null;
-    // let rock = 'rock';
-    // let paper = 'paper';
-    // let scissors = 'scissors';
-
-    // if (rock && paper) {
-    //     //paper wins
-    //     return paper
-    // }
-
-    // else if (rock && scissors) {
-    //     //rock wins
-    //     return rock
-    // }
-
-    // else if (paper && scissors) {
-    //     //scissors wins
-    //     return scissors
-    // }
 
     // Manual win
     else if (playerSelection == 'rock' && computerSelection == 'paper') {
@@ -116,7 +94,7 @@ function overallWin(playerWin, computerWin){
 
 // ---------- GAME-----------------------
 
-function rockPaperScissors() {
+function playRockPaperScissors() {
     // decide how many games you want to play
     for (let i = 0; i < 3; i++){
 
@@ -160,4 +138,4 @@ function rockPaperScissors() {
 
 //---- start GAME ---------
 
-rockPaperScissors()
+playRockPaperScissors()
