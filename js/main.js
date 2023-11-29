@@ -39,24 +39,24 @@ function getComputerChoice() {
 
 function gameStatus(playerSelection, computerSelection) {
 
-    if (playerSelection == computerSelection) {
+    if (playerSelection === computerSelection) {
         console.log("tie");
-    } else if (playerSelection == "rock" && computerSelection == "paper") {
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
         console.log("Computer WINS!");
         return computerWin++;
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
         console.log("You WIN!");
         return playerWin++;
-    } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
         console.log("Compuer WINS!");
         return computerWin++;
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
         console.log("You WIN!");
         return playerWin++;
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
         console.log("Computer WINS!");
         return computerWin++;
-    } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
         console.log("You WIN!");
         return playerWin++;
     }
@@ -70,7 +70,7 @@ function overallWin(playerWin, computerWin){
         console.log("YOU REALLY WIN");
     } else if (playerWin < computerWin) {
         console.log("The computer beat you...");
-    } else if (playerWin == computerWin) {
+    } else if (playerWin === computerWin) {
         console.log("somehow, you both tied");
     }
 }
