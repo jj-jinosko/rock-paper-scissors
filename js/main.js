@@ -1,71 +1,61 @@
-// //---- GLOBALS ----
-let computerSelection;
-let playerSelection;
 
-let playerWin = 0;
-let computerWin = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-// ---------- Player Input: --------------
+// ---------- Get Computer Input --------------
 
 let moves = ['rock', 'paper', 'scissors'];
 
 // get computer player input
 function getComputerChoice() {
-    computerSelection = moves[(Math.random() * moves.length) | 0];
+    let computerSelection = moves[(Math.random() * moves.length) | 0];
     console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
 
-// User input from prompt
-//     - no input = quit
-//     - valid input = cont.
-//     - invald input = retry
+// ------------ Get Player Input --------------
+function getPlayerChoice() {
+    let playerSelection = prompt('please enter your move');
+    return playerSelection;
+}
 
-// ---------- Game Status: ---------------
-// - compare player moves
-//     - win
-//     - tie
-
-
-//         | rock    | paper    | scissors |
-// rock    | tie     | paper    | rock     |
-// paper   | paper   | tie      | scissors |
-// scissors| rock    | scissors | tie      |
+// ---------- Check Game Status: ---------------
 
 function gameStatus(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         console.log('tie');
-    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        console.log('Computer WINS!');
-        return computerWin++;
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+
+    } else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'rock')
+        ) {
         console.log('You WIN!');
-        return playerWin++;
-    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        console.log('Compuer WINS!');
-        return computerWin++;
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        console.log('You WIN!');
-        return playerWin++;
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log('Computer WINS!');
-        return computerWin++;
-    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        console.log('You WIN!');
-        return playerWin++;
+        return playerScore++;
+    } else if (
+        (computerSelection === 'rock' && playerSelection === 'scissors') ||
+        (computerSelection === 'paper' && playerSelection === 'rock') ||
+        (computerSelection === 'scissors' && playerSelection === 'rock')
+        ) {
+        console.log('Computer wins');
+        return computerScore++;
     }
 }
 
+
+//-----
+gameStatus(getPlayerChoice(), getComputerChoice());
+
 //-----------Overall Win-------------
-function overallWin(playerWin, computerWin){
-    console.log('overall playerWin', playerWin);
-    console.log('overall computerWin', computerWin);
-    if (playerWin > computerWin) {
+function overallWin(playerScore, computerScore){
+    console.log('overall playerScore', playerScore);
+    console.log('overall computerScore', computerScore);
+    if (playerScore > computerScore) {
         console.log('YOU REALLY WIN');
-    } else if (playerWin < computerWin) {
+    } else if (playerScore < computerScore) {
         console.log('The computer beat you...');
-    } else if (playerWin === computerWin) {
+    } else if (playerScore === computerScore) {
         console.log('somehow, you both tied');
     }
 }
@@ -98,12 +88,12 @@ function overallWin(playerWin, computerWin){
 //             // ---------- Game Status: ---------------
 //             gameStatus(playerSelection, computerSelection);
 
-//             console.log('playerWin', playerWin)
-//             console.log('computerWin', computerWin)
+//             console.log('playerScore', playerScore)
+//             console.log('computerScore', computerScore)
 //             break;
 //         }
 //     }
-//     overallWin(playerWin, computerWin)
+//     overallWin(playerScore, computerScore)
 // }
 
 // //---- start GAME ---------
