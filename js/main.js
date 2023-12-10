@@ -15,37 +15,49 @@ function getComputerChoice() {
 
 // ------------ Get Player Input --------------
 function getPlayerChoice() {
-    let playerSelection = prompt('please enter your move');
-    return playerSelection;
+    return prompt('please enter your move');
 }
 
 // ---------- Check Game Status: ---------------
 
-function gameStatus(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
-        console.log('tie');
-
+        roundWinner = 'tie'
     } else if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'rock')
         ) {
-        console.log('You WIN!');
+        roundWinner = 'player';
         return playerScore++;
     } else if (
         (computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'paper' && playerSelection === 'rock') ||
         (computerSelection === 'scissors' && playerSelection === 'rock')
         ) {
-        console.log('Computer wins');
+        roundWinner = 'computer';
         return computerScore++;
     }
+
+    updateRoundMessage(roundWinner, playerSelection, computerSelection);
 }
 
-
 //-----
-gameStatus(getPlayerChoice(), getComputerChoice());
+function updateRoundMessage() {
+    if (roundWinner === 'tie'){
+        console.log('tie')
+    }
+    else if (roundWinner === 'player'){
+        console.log('You WIN!');
+    }
+    else if (roundWinner === 'computer'){
+        console.log('computer wins');
+    }
+};
+
+playRound(getPlayerChoice(), getComputerChoice());
+
 
 //-----------Overall Win-------------
 function overallWin(playerScore, computerScore){
@@ -86,7 +98,7 @@ function overallWin(playerScore, computerScore){
 //             };
 
 //             // ---------- Game Status: ---------------
-//             gameStatus(playerSelection, computerSelection);
+//             playRound(playerSelection, computerSelection);
 
 //             console.log('playerScore', playerScore)
 //             console.log('computerScore', computerScore)
