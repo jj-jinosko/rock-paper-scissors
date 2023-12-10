@@ -11,40 +11,36 @@ function getComputerChoice() {
 }
 
 //------- DOM Manipulation --------
+
+// ------------ Get Player Input --------------
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
 
-rockBtn.addEventListener('click', () => getPlayerChoice('rock'));
-paperBtn.addEventListener('click', () => getPlayerChoice('paper'));
-scissorsBtn.addEventListener('click', () => getPlayerChoice('scissors'));
-
-// ------------ Get Player Input --------------
-function getPlayerChoice(playerSelection) {
-    playRound(playerSelection, getComputerChoice());
-    
-
-}
+rockBtn.addEventListener('click', () => playRound('rock'));
+paperBtn.addEventListener('click', () => playRound('paper'));
+scissorsBtn.addEventListener('click', () => playRound('scissors'));
 
 // ---------- Check Game Status: ---------------
 
 // playRound: return the roundWinner (winning player)
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    computerSelection = getComputerChoice();
 
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
     } else if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissors' && computerSelection === 'rock')
+        (playerSelection === 'scissors' && computerSelection === 'paper')
         ) {
         roundWinner = 'player';
         return playerScore++;
     } else if (
         (computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'paper' && playerSelection === 'rock') ||
-        (computerSelection === 'scissors' && playerSelection === 'rock')
+        (computerSelection === 'scissors' && playerSelection === 'paper')
         ) {
         roundWinner = 'computer';
         return computerScore++;
