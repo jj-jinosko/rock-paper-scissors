@@ -6,7 +6,6 @@ let computerScore = 0;
 function getComputerChoice() {
     let moves = ['rock', 'paper', 'scissors'];
     let computerSelection = moves[(Math.random() * moves.length) | 0];
-    console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
 
@@ -26,7 +25,7 @@ scissorsBtn.addEventListener('click', () => playRound('scissors'));
 // playRound: return the roundWinner (winning player)
 
 function playRound(playerSelection) {
-    computerSelection = getComputerChoice();
+    let computerSelection = getComputerChoice();
 
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
@@ -34,40 +33,37 @@ function playRound(playerSelection) {
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
-        ) {
+    ) {
         roundWinner = 'player';
-        return playerScore++;
+        playerScore++;
     } else if (
         (computerSelection === 'rock' && playerSelection === 'scissors') ||
         (computerSelection === 'paper' && playerSelection === 'rock') ||
         (computerSelection === 'scissors' && playerSelection === 'paper')
-        ) {
+    ) {
         roundWinner = 'computer';
-        return computerScore++;
+        computerScore++;
     }
 
     updateRoundMessage(roundWinner, playerSelection, computerSelection); //is there a better way to organize this? with classes?
 }
 
-
-//--
-// function updateScores() {
-
-// }
-
-function updateRoundMessage() {
+function updateRoundMessage(roundWinner, playerSelection, computerSelection) {
     if (roundWinner === 'tie'){
         console.log('tie')
     }
     else if (roundWinner === 'player'){
         console.log('You WIN!');
+        console.log(`${playerSelection} beats ${computerSelection}`);
     }
     else if (roundWinner === 'computer'){
         console.log('computer wins');
+        console.log(`${computerSelection} beats ${playerSelection}`);
     }
 };
 
 //--
+let numberOfRounds = 5;
 
 
 //-----------Overall Win-------------
