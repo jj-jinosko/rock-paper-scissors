@@ -3,22 +3,32 @@ let playerScore = 0;
 let computerScore = 0;
 
 // ---------- Get Computer Input --------------
-
-let moves = ['rock', 'paper', 'scissors'];
-
-// get computer player input
 function getComputerChoice() {
+    let moves = ['rock', 'paper', 'scissors'];
     let computerSelection = moves[(Math.random() * moves.length) | 0];
     console.log('computerSelection', computerSelection); // for testing purposes
     return computerSelection;
 }
 
+//------- DOM Manipulation --------
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+
+rockBtn.addEventListener('click', () => getPlayerChoice('rock'));
+paperBtn.addEventListener('click', () => getPlayerChoice('paper'));
+scissorsBtn.addEventListener('click', () => getPlayerChoice('scissors'));
+
 // ------------ Get Player Input --------------
-function getPlayerChoice() {
-    return prompt('please enter your move');
+function getPlayerChoice(playerSelection) {
+    playRound(playerSelection, getComputerChoice());
+    
+
 }
 
 // ---------- Check Game Status: ---------------
+
+// playRound: return the roundWinner (winning player)
 
 function playRound(playerSelection, computerSelection) {
 
@@ -40,10 +50,15 @@ function playRound(playerSelection, computerSelection) {
         return computerScore++;
     }
 
-    updateRoundMessage(roundWinner, playerSelection, computerSelection);
+    updateRoundMessage(roundWinner, playerSelection, computerSelection); //is there a better way to organize this? with classes?
 }
 
-//-----
+
+//--
+// function updateScores() {
+
+// }
+
 function updateRoundMessage() {
     if (roundWinner === 'tie'){
         console.log('tie')
@@ -56,7 +71,7 @@ function updateRoundMessage() {
     }
 };
 
-playRound(getPlayerChoice(), getComputerChoice());
+//--
 
 
 //-----------Overall Win-------------
@@ -72,42 +87,6 @@ function overallWin(playerScore, computerScore){
     }
 }
 
-// // ---------- GAME-----------------------
 
-// function playRockPaperScissors() {
-//     // decide how many games you want to play
-//     let i;
-//     for (i = 0; i < 1; i++){
 
-//         while (true) {
-//             // ---------- Player Input: --------------
-//             // get computer player input
-//             getComputerChoice()
 
-//             // get user input from prompt, try until a valid input is entered
-
-//             let rockBtn = document.querySelector('#rockBtn');
-//             // rockBtn.addEventListener('click', () => {alert('clicked rock')});
-
-//             rockBtn.addEventListener('click', () => selectItem('rock'));
-
-//             function selectItem(item) {
-//                 playerSelection = item;
-//                 console.log('playerSelection', playerSelection);
-//                 return playerSelection;
-//             };
-
-//             // ---------- Game Status: ---------------
-//             playRound(playerSelection, computerSelection);
-
-//             console.log('playerScore', playerScore)
-//             console.log('computerScore', computerScore)
-//             break;
-//         }
-//     }
-//     overallWin(playerScore, computerScore)
-// }
-
-// //---- start GAME ---------
-
-// playRockPaperScissors()
