@@ -24,13 +24,11 @@ let newResult;
 
 let finalResult = document.querySelector('#finalResult');
 
-//---------- Check Game Status: ---------------
-
-// playRound: return the roundWinner (winning player)
+//---------- Play Game ---------------
 
 function playGame(playerSelection){
     let computerSelection = getComputerChoice();
-    let roundWinner = playRound(playerSelection, computerSelection);
+    let roundWinner = getResult(playerSelection, computerSelection);
     
     newResult = document.createElement('li');
     newResult.textContent = updateRoundMessage(roundWinner, playerSelection, computerSelection);
@@ -42,11 +40,10 @@ function playGame(playerSelection){
         finalResult.textContent = endGame();
         reset();
     }
-
 }
 
-
-function playRound(playerSelection, computerSelection) {
+//---------- get result ---------------
+function getResult(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
