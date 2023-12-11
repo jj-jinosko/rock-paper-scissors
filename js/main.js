@@ -9,25 +9,22 @@ function getComputerChoice() {
     return computerSelection;
 }
 
-//------- DOM Manipulation --------
-
 // ------------ Get Player Input --------------
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
 
-rockBtn.addEventListener('click', () => playRound('rock'));
-paperBtn.addEventListener('click', () => playRound('paper'));
-scissorsBtn.addEventListener('click', () => playRound('scissors'));
+rockBtn.addEventListener('click', () => playGame('rock'));
+paperBtn.addEventListener('click', () => playGame('paper'));
+scissorsBtn.addEventListener('click', () => playGame('scissors'));
 
 
 const resultsList = document.querySelector('#results');
-const newResult = document.createElement('li');
-newResult.textContent = 
+let newResult;
 
-rockBtn.addEventListener('click', () => {
-    resultsList.appendChild(newResult);
-});
+// rockBtn.addEventListener('click', () => {
+//     resultsList.appendChild(newResult);
+// });
 
 
 
@@ -35,11 +32,19 @@ rockBtn.addEventListener('click', () => {
 
 // playRound: return the roundWinner (winning player)
 
-// function playGame(){};
-
-
-function playRound(playerSelection) {
+function playGame(playerSelection){
     let computerSelection = getComputerChoice();
+    let roundWinner = playRound(playerSelection, computerSelection);
+    
+    newResult = document.createElement('li');
+    newResult.textContent = updateRoundMessage(roundWinner, playerSelection, computerSelection);
+    resultsList.appendChild(newResult);
+
+    endGame();
+}
+
+
+function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
@@ -59,23 +64,28 @@ function playRound(playerSelection) {
         computerScore++;
     }
 
-    updateRoundMessage(roundWinner, playerSelection, computerSelection); //is there a better way to organize this? with classes?
+    return roundWinner;
 }
 
 function updateRoundMessage(roundWinner, playerSelection, computerSelection) {
+    let message;
     if (roundWinner === 'tie'){
         console.log('tie')
+        message = 'Tie'
     }
     else if (roundWinner === 'player'){
         console.log('You WIN!');
         console.log(`${playerSelection} beats ${computerSelection}`);
+        message = `${playerSelection} beats ${computerSelection}`;
     }
     else if (roundWinner === 'computer'){
         console.log('computer wins');
         console.log(`${computerSelection} beats ${playerSelection}`);
+        message = `${computerSelection} beats ${playerSelection}`;
+        
     }
 
-    endGame();
+    return message;
 };
 
 let reset = function () {
