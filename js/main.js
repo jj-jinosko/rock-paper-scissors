@@ -72,17 +72,12 @@ function playRound(playerSelection, computerSelection) {
 function updateRoundMessage(roundWinner, playerSelection, computerSelection) {
     let message;
     if (roundWinner === 'tie'){
-        // console.log('tie')
         message = 'Tie'
     }
     else if (roundWinner === 'player'){
-        // console.log('You WIN!');
-        // console.log(`${playerSelection} beats ${computerSelection}`);
         message = `${playerSelection} beats ${computerSelection}`;
     }
     else if (roundWinner === 'computer'){
-        // console.log('computer wins');
-        // console.log(`${computerSelection} beats ${playerSelection}`);
         message = `${computerSelection} beats ${playerSelection}`;
     }
 
@@ -90,7 +85,6 @@ function updateRoundMessage(roundWinner, playerSelection, computerSelection) {
 };
 
 let reset = function () {
-    console.log('game reset')
     playerScore = 0;
     computerScore = 0;
 }
@@ -99,11 +93,9 @@ let reset = function () {
 function endGame() {
     let end = null;
     if (playerScore == 3){
-        //console.log('You win!');
         end = 'You win!';
     }
     else if (computerScore == 3){
-        //console.log('The computer won...')
         end = 'The computer won...';
     }
     return end;
