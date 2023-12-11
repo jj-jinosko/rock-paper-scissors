@@ -20,9 +20,23 @@ rockBtn.addEventListener('click', () => playRound('rock'));
 paperBtn.addEventListener('click', () => playRound('paper'));
 scissorsBtn.addEventListener('click', () => playRound('scissors'));
 
+
+const resultsList = document.querySelector('#results');
+const newResult = document.createElement('li');
+newResult.textContent = 
+
+rockBtn.addEventListener('click', () => {
+    resultsList.appendChild(newResult);
+});
+
+
+
 // ---------- Check Game Status: ---------------
 
 // playRound: return the roundWinner (winning player)
+
+// function playGame(){};
+
 
 function playRound(playerSelection) {
     let computerSelection = getComputerChoice();
@@ -60,25 +74,26 @@ function updateRoundMessage(roundWinner, playerSelection, computerSelection) {
         console.log('computer wins');
         console.log(`${computerSelection} beats ${playerSelection}`);
     }
+
+    endGame();
 };
 
+let reset = function () {
+    console.log('game reset')
+    playerScore = 0;
+    computerScore = 0;
+}
 //--
-let numberOfRounds = 5;
-
-
-//-----------Overall Win-------------
-function overallWin(playerScore, computerScore){
-    console.log('overall playerScore', playerScore);
-    console.log('overall computerScore', computerScore);
-    if (playerScore > computerScore) {
-        console.log('YOU REALLY WIN');
-    } else if (playerScore < computerScore) {
-        console.log('The computer beat you...');
-    } else if (playerScore === computerScore) {
-        console.log('somehow, you both tied');
+function endGame() {
+    if (playerScore == 3){
+        console.log('You win!');
+        reset();
+    }
+    else if (computerScore == 3){
+        console.log('The computer won...')
+        reset();
     }
 }
-
 
 
 
