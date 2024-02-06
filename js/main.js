@@ -29,7 +29,7 @@ let finalResult = document.querySelector('#finalResult');
 function playGame(playerSelection){
     let computerSelection = getComputerChoice();
     let roundWinner = getResult(playerSelection, computerSelection);
-    
+
     newResult = document.createElement('li');
     newResult.textContent = updateRoundMessage(roundWinner, playerSelection, computerSelection);
     resultsList.appendChild(newResult);
